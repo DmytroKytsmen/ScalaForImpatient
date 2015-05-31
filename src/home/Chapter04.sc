@@ -1,9 +1,6 @@
-import java.io.File
 import java.util
 import java.util.Scanner
-
 import scala.collection.mutable
-
 val scores = Map("Alice" -> 10, "Bob" -> 3, "Cindy" -> 8)
 var score = scala.collection.mutable.Map("Alice" -> 10, "bob" -> 3, "Cindy" -> 8)
 val scors = new mutable.HashMap[String, Int]
@@ -18,19 +15,12 @@ for ((k, v) <- scores) yield (v, k)
 val tree = scala.collection.immutable.SortedMap("Alice" -> 10, "Fred" -> 7, "Bob" -> 3, "Cindy" -> 8);
 val months = scala.collection.mutable.LinkedHashMap("January" -> 1, "February" -> 2, "March" -> 3, "April" -> 4);
 for ((k, v) <- months) println(k, v)
-
 import scala.collection.JavaConversions.mapAsScalaMap
-
 val goals: scala.collection.mutable.Map[String, Int] = new util.TreeMap[String, Int]
-
 import scala.collection.JavaConversions.propertiesAsScalaMap
-
 val props: scala.collection.Map[String, String] = System.getProperties()
-
 import java.awt.font.TextAttribute._
-
 import scala.collection.JavaConversions.mapAsJavaMap
-
 val attrs = Map(FAMILY -> "Serif", SIZE -> 12)
 val font = new java.awt.Font(attrs)
 val t = (1, 3.14, "Fred")
@@ -45,7 +35,6 @@ symbols.zip(counts).toMap
 //task01
 val prices = Map("Pizza" -> 40, "Coca-Cola" -> 10, "Oranges" -> 30)
 val discountPrices = for ((k, v) <- prices) yield (k, v * 0.9)
-
 //task02
 //val in = new Scanner(new java.io.File("myfile.txt"));
 //val mMap = new mutable.HashMap[String, Int]()
@@ -56,7 +45,6 @@ val discountPrices = for ((k, v) <- prices) yield (k, v * 0.9)
 //
 //while (in.hasNext()) process(in.next())
 //mMap
-
 
 //task03
 //var immutableMap = Map[String, Int]()
@@ -85,3 +73,45 @@ val discountPrices = for ((k, v) <- prices) yield (k, v * 0.9)
 
 
 //task05
+
+//import scala.collection.JavaConversions.mapAsScalaMap
+//
+//val treeMap: scala.collection.mutable.Map[String, Int] = new util.TreeMap[String, Int]()
+//def treeProcess(s: String) = {
+//  val c = treeMap.getOrElse(s, 0);
+//  treeMap(s) = c + 1
+//}
+//
+//val in = new Scanner(new java.io.File(filename))
+//while(in.hasNext()) treeProcess(in.next())
+//treeMap
+
+//task06
+val daysOfWeek = scala.collection.mutable.LinkedHashMap("Monday" -> java.util.Calendar.MONDAY)
+for((k,v) <- daysOfWeek) println(k+ ": " + v)
+
+//task07
+import scala.collection.JavaConversions.propertiesAsScalaMap
+val javaProperties: scala.collection.Map[String, String] = System.getProperties()
+
+
+var maxKey = 0
+javaProperties.keys.foreach(k => maxKey = maxKey max k.length)
+maxKey
+for((k,v) <- javaProperties) println(k.padTo(maxKey, ' ') + " | " + v)
+
+//task08
+def minmax(values: Array[Int]) =(values.min,values.max)
+minmax(Array(1,2,4,2,5,6,7,2));
+
+//task09
+def lteqgt(values: Array[Int], v:Int) = {
+  ((for (n <- values if n < v) yield  n).length,
+  (for (n <- values if n == v) yield  n).length,
+  (for (n <- values if n < v) yield  n).length)
+}
+
+lteqgt(Array(1,2,4,2,5,6,7,2),4)
+
+
+
