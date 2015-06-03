@@ -171,13 +171,15 @@ class SecretAgent(codename: String) extends Person(codename) {
   override val name = "Secret"
   override val toString = "secret"
 }
+
 //task09
-class Creature{
-  def range:Int = 10
-  val env:Array[Int] = new Array[Int](range)
+class Creature {
+  def range: Int = 10
+
+  val env: Array[Int] = new Array[Int](range)
 }
 
-class Ant extends Creature{
+class Ant extends Creature {
   override def range = 2
 }
 
