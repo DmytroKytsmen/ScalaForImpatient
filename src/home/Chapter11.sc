@@ -76,10 +76,12 @@ println(x4 + y4)
 println(x4 - y4)
 println(x4 * y4)
 println(x4 / y4)
+
 //task04
 class Money(dollar: Int, cent: Int) extends Ordered[Money] {
   val dollars: Int = dollar + cent / 100
   val cents: Int = cent % 100
+
   def toCents(): Int = dollars * 100 + cents
 
   def fromCents(cents: Int) = new Money(cents / 100, cents % 100)
@@ -104,9 +106,12 @@ println(x1 + y1)
 println(x1 - y1)
 println(x1 > y1)
 //task05
-import collection.mutable.ArrayBuffer
+
+import scala.collection.mutable.ArrayBuffer
+
 class Table {
   private val elements = new ArrayBuffer[String]()
+
   def |(element: String) = {
     elements += "<td>%s</td>\n".format(element)
   }
@@ -123,6 +128,7 @@ class Table {
 object Table {
   def applt() = new Table()
 }
+
 //task06
 class ASCIIPicture(val picture: String) {
   def +(that: ASCIIPicture) = new ASCIIPicture(
@@ -150,17 +156,24 @@ val y2 = new ASCIIPicture(
    -----""")
 println(x2 + y2)
 println(x2 ^ y2)
+
 //task07
 class BitSequence(private var sequence: Long = 0) {
   implicit def booleanToInteger(bool: Boolean) = if (bool) 1 else 0
+
   override def toString: String = "%64s".format(sequence.toBinaryString).replace(" ", "0")
+
   def update(bit: Int, state: Int) = sequence |= (state & 1L) << bit % 64
+
   def apply(bit: Int): Int = if ((sequence & 1L << bit % 64) > 0) 1 else 0
 }
+
 //task08
 class Matrix(val m: Int, val n: Int) {
   private val value = Array.ofDim[Double](m, n)
+
   def update(x: Int, y: Int, v: Double) = value(x)(y) = v
+
   def apply(x: Int, y: Int) = value(x)(y)
 
   def +(that: Matrix): Matrix = {
@@ -214,6 +227,7 @@ println()
 println(xmatrix * 2 - xmatrix)
 println()
 println((xmatrix * 2) * (xmatrix * 3))
+
 //task09
 class RichFile {
   def unapply(path: String): Unit = {
@@ -221,8 +235,14 @@ class RichFile {
     if (possition == -1) None else Some((path.substring(0, possition), path.substring(possition + 1)))
   }
 
-  def unaaplySequence(path:String):Option[Seq[String]] ={
+  def unaaplySequence(path: String): Option[Seq[String]] = {
     if (path.trim == "") None else Some(path.trim.split("/"))
   }
 }
+
 //task10
+object RichFile {
+  def unapplySet(s: String): Option[Seq[String]] = {
+    if (s.trim == "") None else Some(s.trim.split("/"))
+  }
+}
